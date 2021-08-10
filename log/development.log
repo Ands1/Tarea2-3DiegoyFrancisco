@@ -1,0 +1,371 @@
+  [1m[35m (986.6ms)[0m  [1m[35mCREATE DATABASE "ands_dev" ENCODING = 'unicode'[0m
+  [1m[35m (793.6ms)[0m  [1m[35mCREATE DATABASE "ands_test" ENCODING = 'unicode'[0m
+  [1m[35m (166.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (165.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8358991456314672180)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCars (20210810161434)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (106.3ms)[0m  [1m[35mCREATE TABLE "cars" ("id" bigserial primary key, "model" integer, "brand" character varying, "driverid" integer, "alias" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210810161434"]]
+  [1m[36mTRANSACTION (18.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDrivers (20210810161515)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (86.2ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210810161515"]]
+  [1m[36mTRANSACTION (23.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCodeToCars (20210810161542)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "cars" ADD "code" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210810161542"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCodeToDrivers (20210810161552)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "drivers" ADD "code" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210810161552"]]
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-08-10 16:20:07.589949"], ["updated_at", "2021-08-10 16:20:07.589949"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(8358991456314672180)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (1.0ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "ToyooootaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:24:37.109417"], ["updated_at", "2021-08-10 16:24:37.109417"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (22.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (0.6ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "TesssslaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:24:37.139644"], ["updated_at", "2021-08-10 16:24:37.139644"], ["code", "cod2"]]
+  [1m[36mTRANSACTION (136.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (0.5ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "MazdaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:24:37.302189"], ["updated_at", "2021-08-10 16:24:37.302189"], ["code", "cod3"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.9ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "aNDS_seed_dev"], ["created_at", "2021-08-10 16:24:37.329654"], ["updated_at", "2021-08-10 16:24:37.329654"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlangas_seed_dev"], ["created_at", "2021-08-10 16:24:37.350562"], ["updated_at", "2021-08-10 16:24:37.350562"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlota_seed_dev"], ["created_at", "2021-08-10 16:24:37.361135"], ["updated_at", "2021-08-10 16:24:37.361135"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cars" for ::1 at 2021-08-10 10:24:58 -0600
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (2.8ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:17
+  Rendered cars/index.html.erb within layouts/application (Duration: 71.5ms | Allocations: 7231)
+[Webpacker] Compiling...
+Started GET "/cars" for ::1 at 2021-08-10 10:25:01 -0600
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (2.6ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:17
+  Rendered cars/index.html.erb within layouts/application (Duration: 78.7ms | Allocations: 4630)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/ands/Documentos/Ruby/TareaLomax3/public/packs
+[Webpacker] Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-property-in-object.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-property-in-object.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-property-in-object.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-property-in-object.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-property-in-object.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-property-in-object since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-private-property-in-object.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+
+[Webpacker] Hash: e2a8a876c5815bee1e21
+Version: webpack 4.46.0
+Time: 4174ms
+Built at: 08/10/2021 10:25:06 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-e421b4aa3f716bebdab1.js    125 KiB  application  [emitted] [immutable]  application
+js/application-e421b4aa3f716bebdab1.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-e421b4aa3f716bebdab1.js js/application-e421b4aa3f716bebdab1.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 8014.0ms | Allocations: 37941)
+Completed 200 OK in 8050ms (Views: 8012.3ms | ActiveRecord: 14.8ms | Allocations: 43090)
+
+
+[Webpacker] Compiled all packs in /home/ands/Documentos/Ruby/TareaLomax3/public/packs
+[Webpacker] Hash: e2a8a876c5815bee1e21
+Version: webpack 4.46.0
+Time: 1719ms
+Built at: 08/10/2021 10:25:07 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-e421b4aa3f716bebdab1.js    125 KiB  application  [emitted] [immutable]  application
+js/application-e421b4aa3f716bebdab1.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-e421b4aa3f716bebdab1.js js/application-e421b4aa3f716bebdab1.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 5502.6ms | Allocations: 11729)
+Completed 200 OK in 5508ms (Views: 5468.6ms | ActiveRecord: 36.8ms | Allocations: 12241)
+
+
+Started GET "/drivers" for ::1 at 2021-08-10 10:25:10 -0600
+Processing by DriversController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drivers/index.html.erb within layouts/application
+  [1m[36mDriver Load (4.0ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/drivers/index.html.erb:14
+  Rendered drivers/index.html.erb within layouts/application (Duration: 34.6ms | Allocations: 4726)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.4ms | Allocations: 7915)
+Completed 200 OK in 53ms (Views: 31.5ms | ActiveRecord: 17.7ms | Allocations: 9550)
+
+
+Started GET "/drivers" for ::1 at 2021-08-10 10:25:11 -0600
+Processing by DriversController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drivers/index.html.erb within layouts/application
+  [1m[36mDriver Load (1.7ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/drivers/index.html.erb:14
+  Rendered drivers/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 1216)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 4195)
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 1.7ms | Allocations: 4707)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8358991456314672180)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8358991456314672180)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8358991456314672180)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8358991456314672180)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mDriver Load (0.6ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ lib/tasks/registro.rake:8:in `block (2 levels) in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+  [1m[36mDriver Update (0.7ms)[0m  [1m[33mUPDATE "drivers" SET "updated_at" = $1, "code" = $2 WHERE "drivers"."id" = $3[0m  [["updated_at", "2021-08-10 16:30:12.386392"], ["code", "1-C"], ["id", 1]]
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (38.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+  [1m[36mDriver Update (1.0ms)[0m  [1m[33mUPDATE "drivers" SET "updated_at" = $1, "code" = $2 WHERE "drivers"."id" = $3[0m  [["updated_at", "2021-08-10 16:30:12.431261"], ["code", "1-C"], ["id", 2]]
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+  [1m[36mDriver Update (0.8ms)[0m  [1m[33mUPDATE "drivers" SET "updated_at" = $1, "code" = $2 WHERE "drivers"."id" = $3[0m  [["updated_at", "2021-08-10 16:30:12.442228"], ["code", "1-C"], ["id", 3]]
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/registro.rake:10:in `block (3 levels) in <main>'
+Started GET "/drivers/new" for ::1 at 2021-08-10 10:31:35 -0600
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DriversController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drivers/new.html.erb within layouts/application
+  Rendered drivers/_form.html.erb (Duration: 297.2ms | Allocations: 5023)
+  Rendered drivers/new.html.erb within layouts/application (Duration: 300.3ms | Allocations: 5701)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 319.5ms | Allocations: 12039)
+Completed 200 OK in 363ms (Views: 324.5ms | ActiveRecord: 11.2ms | Allocations: 19743)
+
+
+Started GET "/drivers/new" for ::1 at 2021-08-10 10:34:13 -0600
+Processing by DriversController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drivers/new.html.erb within layouts/application
+  Rendered drivers/_form.html.erb (Duration: 5.5ms | Allocations: 1175)
+  Rendered drivers/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 1565)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.5ms | Allocations: 4916)
+Completed 200 OK in 25ms (Views: 23.2ms | ActiveRecord: 0.0ms | Allocations: 6392)
+
+
+Started POST "/drivers" for ::1 at 2021-08-10 10:34:21 -0600
+Processing by DriversController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "driver"=>{"name"=>"Carlos", "code"=>"7"}, "commit"=>"Create Driver"}
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/drivers_controller.rb:27:in `block in create'
+  [1m[36mDriver Create (2.8ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carlos"], ["created_at", "2021-08-10 16:34:21.053768"], ["updated_at", "2021-08-10 16:34:21.053768"], ["code", "7"]]
+  ↳ app/controllers/drivers_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (20.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/drivers_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/drivers/4
+Completed 302 Found in 39ms (ActiveRecord: 24.8ms | Allocations: 3808)
+
+
+Started GET "/drivers/4" for ::1 at 2021-08-10 10:34:21 -0600
+Processing by DriversController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mDriver Load (1.9ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/drivers_controller.rb:62:in `set_driver'
+  Rendering layout layouts/application.html.erb
+  Rendering drivers/show.html.erb within layouts/application
+  Rendered drivers/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 358)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 3426)
+Completed 200 OK in 45ms (Views: 17.6ms | ActiveRecord: 3.6ms | Allocations: 8339)
+
+
+Started GET "/drivers" for ::1 at 2021-08-10 10:34:23 -0600
+Processing by DriversController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drivers/index.html.erb within layouts/application
+  [1m[36mDriver Load (4.9ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/drivers/index.html.erb:15
+  Rendered drivers/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 2285)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.7ms | Allocations: 5268)
+Completed 200 OK in 27ms (Views: 19.8ms | ActiveRecord: 4.9ms | Allocations: 5896)
+
+
+Started GET "/drivers" for ::1 at 2021-08-10 10:34:40 -0600
+Processing by DriversController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drivers/index.html.erb within layouts/application
+  [1m[36mDriver Load (2.4ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/drivers/index.html.erb:15
+  Rendered drivers/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 1326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 4295)
+Completed 200 OK in 24ms (Views: 20.0ms | ActiveRecord: 2.4ms | Allocations: 4753)
+
+
+Started GET "/cars" for ::1 at 2021-08-10 10:34:45 -0600
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (2.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:18
+  Rendered cars/index.html.erb within layouts/application (Duration: 35.2ms | Allocations: 5996)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.6ms | Allocations: 9187)
+Completed 200 OK in 52ms (Views: 38.5ms | ActiveRecord: 10.8ms | Allocations: 10808)
+
+
+Started GET "/cars" for ::1 at 2021-08-10 10:34:46 -0600
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (3.1ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:18
+  Rendered cars/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 1238)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 4207)
+Completed 200 OK in 24ms (Views: 19.2ms | ActiveRecord: 3.1ms | Allocations: 4716)
+
+
+Started GET "/cars/new" for ::1 at 2021-08-10 10:34:50 -0600
+Processing by CarsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (Duration: 51.4ms | Allocations: 2139)
+  Rendered cars/new.html.erb within layouts/application (Duration: 55.9ms | Allocations: 3152)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 64.4ms | Allocations: 6255)
+Completed 200 OK in 67ms (Views: 65.4ms | ActiveRecord: 0.0ms | Allocations: 6904)
+
+
+Started POST "/cars" for ::1 at 2021-08-10 10:35:03 -0600
+Processing by CarsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "car"=>{"model"=>"7", "brand"=>"Yotota", "driverid"=>"7", "alias"=>"CR7", "code"=>"7"}, "commit"=>"Create Car"}
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cars_controller.rb:27:in `block in create'
+  [1m[36mCar Create (2.2ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "alias", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["model", 7], ["brand", "Yotota"], ["driverid", 7], ["alias", "CR7"], ["created_at", "2021-08-10 16:35:03.539322"], ["updated_at", "2021-08-10 16:35:03.539322"], ["code", "7"]]
+  ↳ app/controllers/cars_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (27.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cars_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/cars/4
+Completed 302 Found in 42ms (ActiveRecord: 31.4ms | Allocations: 3167)
+
+
+Started GET "/cars/4" for ::1 at 2021-08-10 10:35:03 -0600
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCar Load (1.8ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cars_controller.rb:62:in `set_car'
+  Rendering layout layouts/application.html.erb
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 355)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 3325)
+Completed 200 OK in 19ms (Views: 11.2ms | ActiveRecord: 1.8ms | Allocations: 4881)
+
+
+Started GET "/cars" for ::1 at 2021-08-10 10:35:05 -0600
+Processing by CarsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cars/index.html.erb within layouts/application
+  [1m[36mCar Load (2.1ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  ↳ app/views/cars/index.html.erb:18
+  Rendered cars/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 1371)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.8ms | Allocations: 4993)
+Completed 200 OK in 26ms (Views: 22.8ms | ActiveRecord: 2.1ms | Allocations: 5467)
+
+
+Started GET "/drivers" for ::1 at 2021-08-10 10:49:07 -0600
+Processing by DriversController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drivers/index.html.erb within layouts/application
+  [1m[36mDriver Load (2.9ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/drivers/index.html.erb:15
+  Rendered drivers/index.html.erb within layouts/application (Duration: 52.6ms | Allocations: 4723)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 62.8ms | Allocations: 7692)
+Completed 200 OK in 65ms (Views: 63.9ms | ActiveRecord: 27.2ms | Allocations: 8151)
+
+

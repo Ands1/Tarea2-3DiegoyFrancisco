@@ -1,0 +1,75 @@
+  [1m[35m (168.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (108.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (379.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ands_test"[0m
+  [1m[35m (802.8ms)[0m  [1m[35mCREATE DATABASE "ands_test" ENCODING = 'unicode'[0m
+  [1m[35m (238.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (142.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7485622789346115015)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCars (20210810161434)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (126.9ms)[0m  [1m[35mCREATE TABLE "cars" ("id" bigserial primary key, "model" integer, "brand" character varying, "driverid" integer, "alias" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210810161434"]]
+  [1m[36mTRANSACTION (26.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDrivers (20210810161515)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (96.5ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210810161515"]]
+  [1m[36mTRANSACTION (21.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCodeToCars (20210810161542)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "cars" ADD "code" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210810161542"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCodeToDrivers (20210810161552)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "drivers" ADD "code" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210810161552"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2021-08-10 16:27:21.897421"], ["updated_at", "2021-08-10 16:27:21.897421"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7485622789346115015)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (1.0ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "ToyotaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:27:48.693026"], ["updated_at", "2021-08-10 16:27:48.693026"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (29.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (0.4ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "TeslaaaaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:27:48.726945"], ["updated_at", "2021-08-10 16:27:48.726945"], ["code", "cod2"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (0.5ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "MazdaaaaaaaaaaaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:27:48.738160"], ["updated_at", "2021-08-10 16:27:48.738160"], ["code", "cod3"]]
+  [1m[36mTRANSACTION (12.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.9ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Anda_seed_test"], ["created_at", "2021-08-10 16:27:48.768592"], ["updated_at", "2021-08-10 16:27:48.768592"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "ANdo_seed_test"], ["created_at", "2021-08-10 16:27:48.793906"], ["updated_at", "2021-08-10 16:27:48.793906"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Andito_seed_test"], ["created_at", "2021-08-10 16:27:48.804724"], ["updated_at", "2021-08-10 16:27:48.804724"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (0.7ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "ToyotaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:28:10.296602"], ["updated_at", "2021-08-10 16:28:10.296602"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (242.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (0.4ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "TeslaaaaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:28:10.543109"], ["updated_at", "2021-08-10 16:28:10.543109"], ["code", "cod2"]]
+  [1m[36mTRANSACTION (25.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCar Create (0.5ms)[0m  [1m[32mINSERT INTO "cars" ("model", "brand", "driverid", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["model", 7], ["brand", "MazdaaaaaaaaaaaSeed"], ["driverid", 7], ["created_at", "2021-08-10 16:28:10.571737"], ["updated_at", "2021-08-10 16:28:10.571737"], ["code", "cod3"]]
+  [1m[36mTRANSACTION (130.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Anda_seed_test"], ["created_at", "2021-08-10 16:28:10.717072"], ["updated_at", "2021-08-10 16:28:10.717072"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "ANdo_seed_test"], ["created_at", "2021-08-10 16:28:10.726778"], ["updated_at", "2021-08-10 16:28:10.726778"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDriver Create (0.5ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at", "code") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Andito_seed_test"], ["created_at", "2021-08-10 16:28:10.737852"], ["updated_at", "2021-08-10 16:28:10.737852"], ["code", "cod1"]]
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[35mCOMMIT[0m
